@@ -1397,7 +1397,37 @@
     .btn-primary, .btn-outline { text-align: center; justify-content: center; }
     .sobre-stats { grid-template-columns: 1fr 1fr; }
     .footer-inner { flex-direction: column; text-align: center; }
-  }
+  
+  /* ===================== BOTÃO DOS PROBLEMAS ===================== */
+.problem-btn {
+  margin-top: 15px;
+  padding: 12px 14px;
+  background: var(--red);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.problem-btn:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(232,34,10,0.25);
+}
+
+.problem-btn:active {
+  transform: translateY(0px);
+  box-shadow: 0 5px 15px rgba(232,34,10,0.2);
+}
 </style>
 </head>
 <body>
