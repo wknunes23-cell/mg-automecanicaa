@@ -310,7 +310,7 @@
     opacity: 0;
     transition: opacity 0.2s;
   }
-  /* ===================== BOTÃO DOS PROBLEMAS ===================== */
+
 .problem-btn {
   display: inline-flex;
   align-items: center;
@@ -318,8 +318,8 @@
   gap: 10px;
 
   margin-top: 15px;
-  width: 100%;
-  padding: 14px 18px;
+  width: auto;         
+  padding: 12px 18px;
 
   background: var(--red);
   color: #fff;
@@ -328,7 +328,7 @@
   border-radius: 2px;
 
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -340,8 +340,6 @@
 
   transition: background 0.2s ease, transform 0.15s ease;
 }
-
-/* brilho leve igual padrão do site */
 .problem-btn::after {
   content: '';
   position: absolute;
@@ -351,17 +349,13 @@
   transition: opacity 0.2s;
 }
 
-/* hover igual btn-primary */
 .problem-btn:hover {
   background: var(--red-dark);
   transform: translateY(-1px);
 }
-
 .problem-btn:hover::after {
   opacity: 1;
 }
-
-/* clique */
 .problem-btn:active {
   transform: translateY(0px);
 }
@@ -1453,41 +1447,7 @@
     .footer-inner { flex-direction: column; text-align: center; }
     }
   
-/* ===================== BOTÃO DOS PROBLEMAS ===================== */
-.problem-btn {
-  all: unset;
-  display: block;
-  margin-top: 15px;
-  padding: 14px 16px;
-  background: var(--red);
-  color: #fff;
-  border-radius: 4px;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  width: 100%;
-  text-align: center;
-  transition: all 0.25s ease;
-  position: relative;
-  box-shadow: 0 6px 18px rgba(232,34,10,0.15);
-  border: 1px solid rgba(255,255,255,0.08);
-}
 
-/* efeito hover */
-.problem-btn:hover {
-  background: var(--red-dark);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(232,34,10,0.25);
-}
-
-/* efeito clique */
-.problem-btn:active {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 18px rgba(232,34,10,0.2);
-}
 </style>
 </head>
 <body>
