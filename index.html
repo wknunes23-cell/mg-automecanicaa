@@ -310,7 +310,8 @@
     opacity: 0;
     transition: opacity 0.2s;
   }
-  .problem-btn {
+  /* ===================== BOTÃO DOS PROBLEMAS ===================== */
+.problem-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -340,7 +341,30 @@
   transition: background 0.2s ease, transform 0.15s ease;
 }
 
+/* brilho leve igual padrão do site */
+.problem-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.1);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
 
+/* hover igual btn-primary */
+.problem-btn:hover {
+  background: var(--red-dark);
+  transform: translateY(-1px);
+}
+
+.problem-btn:hover::after {
+  opacity: 1;
+}
+
+/* clique */
+.problem-btn:active {
+  transform: translateY(0px);
+}
   .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
   .btn-primary:hover::after { opacity: 1; }
 
