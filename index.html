@@ -310,6 +310,36 @@
     opacity: 0;
     transition: opacity 0.2s;
   }
+  .problem-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  margin-top: 15px;
+  width: 100%;
+  padding: 14px 18px;
+
+  background: var(--red);
+  color: #fff;
+
+  border: none;
+  border-radius: 2px;
+
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
 
   .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
   .btn-primary:hover::after { opacity: 1; }
