@@ -2166,172 +2166,209 @@
   </a>
 </div>
 
-<script>
-  // Navbar scroll effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  <script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// Mobile menu
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  menu.classList.toggle('open');
+}
+
+// Scroll reveal
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => revealObs.observe(el));
+
+// Simulator
+function selectProblem(problem) {
+  document.getElementById('step1').classList.remove('active');
+  document.getElementById('step2').classList.add('active');
+  document.getElementById('simTitle').textContent = `Problema: ${problem}`;
+  const link = document.getElementById('simLink');
+  link.href = `https://wa.me/5577999416779?text=Oi!%20Meu%20carro%20est%C3%A1%20com%20o%20seguinte%20problema%3A%20${encodeURIComponent(problem)}.%20Pode%20me%20ajudar%3F`;
+}
+
+function resetSim() {
+  document.getElementById('step2').classList.remove('active');
+  document.getElementById('step1').classList.add('active');
+  document.querySelectorAll('.sim-option').forEach(o => o.classList.remove('selected'));
+}
+
+// ── ORÇAMENTO ───────────────────────────────────────────────────────────────
+const orcData = { servico: '', problema: '', marca: '', modelo: '', ano: '', comb: '', nome: '', tel: '', horario: '' };
+
+function selectOrcOpt(el, field) {
+  document.querySelectorAll('.orc-opt').forEach(o => {
+    o.style.borderColor = 'rgba(255,255,255,0.08)';
+    o.style.background = 'var(--black-3)';
+  });
+  el.style.borderColor = 'var(--red)';
+  el.style.background = 'rgba(232,34,10,0.08)';
+  orcData[field] = el.dataset.val;
+}
+
+// 🔥 NOVA FUNÇÃO (botão dos cards)
+function preencherOrcamento(servico, problema) {
+  document.getElementById('orcamento').scrollIntoView({ behavior: 'smooth' });
+
+  orcData.servico = servico;
+  orcData.problema = problema;
+
+  // marca visualmente o serviço
+  document.querySelectorAll('.orc-opt').forEach(opt => {
+    if (opt.dataset.val === servico) {
+      opt.style.borderColor = 'var(--red)';
+      opt.style.background = 'rgba(232,34,10,0.08)';
+    } else {
+      opt.style.borderColor = 'rgba(255,255,255,0.08)';
+      opt.style.background = 'var(--black-3)';
+    }
   });
 
-  // Mobile menu
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    menu.classList.toggle('open');
-  }
+  // preenche problema
+  document.getElementById('orc-problema').value = problema;
 
-  // Scroll reveal
-  const revealEls = document.querySelectorAll('.reveal');
-  const revealObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        revealObs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  // 👉 vai direto pro STEP 2
+  document.getElementById('orc-step-1').style.display = 'none';
+  document.getElementById('orc-step-2').style.display = 'block';
+  document.getElementById('orc-step-3').style.display = 'none';
 
-  revealEls.forEach(el => revealObs.observe(el));
+  setStepIndicator(2);
+}
 
-  // Simulator
-  function selectProblem(problem) {
-    document.getElementById('step1').classList.remove('active');
-    document.getElementById('step2').classList.add('active');
-    document.getElementById('simTitle').textContent = `Problema: ${problem}`;
-    const link = document.getElementById('simLink');
-    link.href = `https://wa.me/5577999416779?text=Oi!%20Meu%20carro%20est%C3%A1%20com%20o%20seguinte%20problema%3A%20${encodeURIComponent(problem)}.%20Pode%20me%20ajudar%3F`;
-  }
-
-  function resetSim() {
-    document.getElementById('step2').classList.remove('active');
-    document.getElementById('step1').classList.add('active');
-    document.querySelectorAll('.sim-option').forEach(o => o.classList.remove('selected'));
-  }
-
-
-  // ── ORÇAMENTO ───────────────────────────────────────────────────────────────
-  const orcData = { servico: '', problema: '', marca: '', modelo: '', ano: '', comb: '', nome: '', tel: '', horario: '' };
-
-  function selectOrcOpt(el, field) {
-    document.querySelectorAll('.orc-opt').forEach(o => {
-      o.style.borderColor = 'rgba(255,255,255,0.08)';
-      o.style.background = 'var(--black-3)';
-    });
-    el.style.borderColor = 'var(--red)';
-    el.style.background = 'rgba(232,34,10,0.08)';
-    orcData[field] = el.dataset.val;
-  }
-
-  function setStepIndicator(step) {
-    [1,2,3].forEach(i => {
-      const el = document.getElementById('step-ind-' + i);
-      if (i < step) {
-        el.style.background = 'rgba(232,34,10,0.3)';
-        el.style.color = 'var(--red)';
-      } else if (i === step) {
-        el.style.background = 'var(--red)';
-        el.style.color = '#fff';
-      } else {
-        el.style.background = 'var(--black-3)';
-        el.style.color = 'var(--gray-4)';
-      }
-    });
-  }
-
-  function orcNext(step) {
-    if (step === 1) {
-      orcData.problema = document.getElementById('orc-problema').value;
-      document.getElementById('orc-step-1').style.display = 'none';
-      document.getElementById('orc-step-2').style.display = 'block';
-      setStepIndicator(2);
-    } else if (step === 2) {
-      const marca = document.getElementById('orc-marca').value.trim();
-      const modelo = document.getElementById('orc-modelo').value.trim();
-      if (!marca || !modelo) {
-        alert('Por favor, informe a marca e o modelo do veículo.');
-        return;
-      }
-      orcData.marca = marca;
-      orcData.modelo = modelo;
-      orcData.ano = document.getElementById('orc-ano').value;
-      orcData.comb = document.getElementById('orc-comb').value;
-      document.getElementById('orc-step-2').style.display = 'none';
-      document.getElementById('orc-step-3').style.display = 'block';
-      setStepIndicator(3);
+function setStepIndicator(step) {
+  [1,2,3].forEach(i => {
+    const el = document.getElementById('step-ind-' + i);
+    if (i < step) {
+      el.style.background = 'rgba(232,34,10,0.3)';
+      el.style.color = 'var(--red)';
+    } else if (i === step) {
+      el.style.background = 'var(--red)';
+      el.style.color = '#fff';
+    } else {
+      el.style.background = 'var(--black-3)';
+      el.style.color = 'var(--gray-4)';
     }
-  }
+  });
+}
 
-  function orcBack(step) {
-    if (step === 2) {
-      document.getElementById('orc-step-2').style.display = 'none';
-      document.getElementById('orc-step-1').style.display = 'block';
-      setStepIndicator(1);
-    } else if (step === 3) {
-      document.getElementById('orc-step-3').style.display = 'none';
-      document.getElementById('orc-step-2').style.display = 'block';
-      setStepIndicator(2);
-    }
-  }
-
-  function enviarOrcamento() {
-    const nome = document.getElementById('orc-nome').value.trim();
-    const tel = document.getElementById('orc-tel').value.trim();
-    if (!nome || !tel) {
-      alert('Por favor, informe seu nome e WhatsApp.');
+function orcNext(step) {
+  if (step === 1) {
+    orcData.problema = document.getElementById('orc-problema').value;
+    document.getElementById('orc-step-1').style.display = 'none';
+    document.getElementById('orc-step-2').style.display = 'block';
+    setStepIndicator(2);
+  } else if (step === 2) {
+    const marca = document.getElementById('orc-marca').value.trim();
+    const modelo = document.getElementById('orc-modelo').value.trim();
+    if (!marca || !modelo) {
+      alert('Por favor, informe a marca e o modelo do veículo.');
       return;
     }
-    orcData.nome = nome;
-    orcData.tel = tel;
-    orcData.horario = document.getElementById('orc-horario').value;
+    orcData.marca = marca;
+    orcData.modelo = modelo;
+    orcData.ano = document.getElementById('orc-ano').value;
+    orcData.comb = document.getElementById('orc-comb').value;
 
-    const msg = [
-      '🔧 *Solicitação de Orçamento — MG Automecanica*',
-      '',
-      '👤 *Nome:* ' + orcData.nome,
-      '📱 *WhatsApp:* ' + orcData.tel,
-      '⏰ *Melhor horário:* ' + orcData.horario,
-      '',
-      '🚗 *Veículo:* ' + orcData.marca + ' ' + orcData.modelo + (orcData.ano ? ' (' + orcData.ano + ')' : '') + (orcData.comb ? ' — ' + orcData.comb : ''),
-      '',
-      '🔩 *Serviço:* ' + (orcData.servico || 'Não especificado'),
-      (orcData.problema ? '📝 *Descrição:* ' + orcData.problema : ''),
-    ].filter(Boolean).join('\n');
-
-    window.open('https://wa.me/5577999416779?text=' + encodeURIComponent(msg), '_blank');
-    document.getElementById('orc-step-3').style.display = 'none';
-    document.getElementById('orc-step-4').style.display = 'block';
-    document.querySelectorAll('[id^=step-ind-]').forEach(el => {
-      el.style.background = 'rgba(37,211,102,0.2)';
-      el.style.color = '#25D366';
-    });
+    document.getElementById('orc-step-2').style.display = 'none';
+    document.getElementById('orc-step-3').style.display = 'block';
+    setStepIndicator(3);
   }
+}
 
-  function orcReset() {
-    ['servico','problema','marca','modelo','ano','comb','nome','tel','horario'].forEach(k => orcData[k] = '');
-    document.getElementById('orc-step-4').style.display = 'none';
+function orcBack(step) {
+  if (step === 2) {
+    document.getElementById('orc-step-2').style.display = 'none';
     document.getElementById('orc-step-1').style.display = 'block';
-    document.getElementById('orc-problema').value = '';
-    document.getElementById('orc-marca').value = '';
-    document.getElementById('orc-modelo').value = '';
-    document.getElementById('orc-ano').value = '';
-    document.getElementById('orc-nome').value = '';
-    document.getElementById('orc-tel').value = '';
-    document.querySelectorAll('.orc-opt').forEach(o => {
-      o.style.borderColor = 'rgba(255,255,255,0.08)';
-      o.style.background = 'var(--black-3)';
-    });
     setStepIndicator(1);
+  } else if (step === 3) {
+    document.getElementById('orc-step-3').style.display = 'none';
+    document.getElementById('orc-step-2').style.display = 'block';
+    setStepIndicator(2);
+  }
+}
+
+function enviarOrcamento() {
+  const nome = document.getElementById('orc-nome').value.trim();
+  const tel = document.getElementById('orc-tel').value.trim();
+
+  if (!nome || !tel) {
+    alert('Por favor, informe seu nome e WhatsApp.');
+    return;
   }
 
-  // Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', (e) => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    });
+  orcData.nome = nome;
+  orcData.tel = tel;
+  orcData.horario = document.getElementById('orc-horario').value;
+
+  const msg = [
+    '🔧 *Solicitação de Orçamento — MG Automecanica*',
+    '',
+    '👤 *Nome:* ' + orcData.nome,
+    '📱 *WhatsApp:* ' + orcData.tel,
+    '⏰ *Melhor horário:* ' + orcData.horario,
+    '',
+    '🚗 *Veículo:* ' + orcData.marca + ' ' + orcData.modelo + (orcData.ano ? ' (' + orcData.ano + ')' : '') + (orcData.comb ? ' — ' + orcData.comb : ''),
+    '',
+    '🔩 *Serviço:* ' + (orcData.servico || 'Não especificado'),
+    (orcData.problema ? '📝 *Descrição:* ' + orcData.problema : ''),
+  ].filter(Boolean).join('\n');
+
+  window.open('https://wa.me/5577999416779?text=' + encodeURIComponent(msg), '_blank');
+
+  document.getElementById('orc-step-3').style.display = 'none';
+  document.getElementById('orc-step-4').style.display = 'block';
+
+  document.querySelectorAll('[id^=step-ind-]').forEach(el => {
+    el.style.background = 'rgba(37,211,102,0.2)';
+    el.style.color = '#25D366';
   });
+}
+
+function orcReset() {
+  ['servico','problema','marca','modelo','ano','comb','nome','tel','horario'].forEach(k => orcData[k] = '');
+
+  document.getElementById('orc-step-4').style.display = 'none';
+  document.getElementById('orc-step-1').style.display = 'block';
+
+  document.getElementById('orc-problema').value = '';
+  document.getElementById('orc-marca').value = '';
+  document.getElementById('orc-modelo').value = '';
+  document.getElementById('orc-ano').value = '';
+  document.getElementById('orc-nome').value = '';
+  document.getElementById('orc-tel').value = '';
+
+  document.querySelectorAll('.orc-opt').forEach(o => {
+    o.style.borderColor = 'rgba(255,255,255,0.08)';
+    o.style.background = 'var(--black-3)';
+  });
+
+  setStepIndicator(1);
+}
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
 </script>
 </body>
 </html>
