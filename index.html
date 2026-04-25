@@ -1478,6 +1478,7 @@
 <!-- PROBLEMAS COMUNS -->
 <section id="problemas">
   <div class="container">
+    
     <div class="section-header reveal">
       <span class="label">Identificamos o problema</span>
       <h2 class="display-lg">Seu carro<br>está assim?</h2>
@@ -1488,52 +1489,88 @@
 
     <div class="problems-grid">
 
+      <!-- 1 -->
       <div class="problem-card reveal reveal-delay-1">
         <div class="problem-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
         </div>
         <h3>Barulho na suspensão?</h3>
         <p>Batidas ao passar em buracos ou irregularidades. Pode ser desgaste em amortecedores, buchas ou pivôs.</p>
+
+        <button class="problem-btn"
+          onclick="preencherOrcamento('Suspensão', 'Barulho na suspensão?')">
+          Solicitar orçamento
+        </button>
       </div>
 
+      <!-- 2 -->
       <div class="problem-card reveal reveal-delay-2">
         <div class="problem-icon">
           <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         </div>
         <h3>Carro fraco ou sem força?</h3>
         <p>Dificuldade na subida, resposta lenta ou consumo alto. Pode indicar falha no motor ou transmissão.</p>
+
+        <button class="problem-btn"
+          onclick="preencherOrcamento('Motor', 'Carro fraco ou sem força?')">
+          Solicitar orçamento
+        </button>
       </div>
 
+      <!-- 3 -->
       <div class="problem-card reveal reveal-delay-3">
         <div class="problem-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="9"/><path d="M12 3v2M12 19v2M3 12h2M19 12h2"/></svg>
         </div>
         <h3>Freio fazendo barulho?</h3>
-        <p>Chiado, vibração ou pedal baixo ao frear. Não arrisque — isso compromete diretamente sua segurança.</p>
+        <p>Chiado, vibração ou pedal baixo ao frear. Não arrisque — isso compromete sua segurança.</p>
+
+        <button class="problem-btn"
+          onclick="preencherOrcamento('Freio', 'Freio fazendo barulho?')">
+          Solicitar orçamento
+        </button>
       </div>
 
+      <!-- 4 -->
       <div class="problem-card reveal reveal-delay-4">
         <div class="problem-icon">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Marcha difícil ou arranhando?</h3>
         <p>Dificuldade ao engatar ou ruídos no câmbio. Pode ser desgaste interno ou falta de ajuste.</p>
+
+        <button class="problem-btn"
+          onclick="preencherOrcamento('Câmbio', 'Marcha difícil ou arranhando?')">
+          Solicitar orçamento
+        </button>
       </div>
 
+      <!-- 5 -->
       <div class="problem-card reveal reveal-delay-5">
         <div class="problem-icon">
           <svg viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
         </div>
         <h3>Carro puxando ou instável?</h3>
-        <p>Direção desalinhada, volante torto ou desgaste irregular dos pneus. Ajustamos para mais segurança.</p>
+        <p>Direção desalinhada, volante torto ou desgaste irregular dos pneus.</p>
+
+        <button class="problem-btn"
+          onclick="preencherOrcamento('Alinhamento', 'Carro puxando ou instável?')">
+          Solicitar orçamento
+        </button>
       </div>
 
+      <!-- 6 -->
       <div class="problem-card reveal reveal-delay-6">
         <div class="problem-icon">
           <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Motor esquentando?</h3>
-        <p>Superaquecimento ou perda de desempenho. Resolver rápido evita danos maiores e custos altos.</p>
+        <p>Superaquecimento ou perda de desempenho. Resolver rápido evita danos maiores.</p>
+
+        <button class="problem-btn"
+          onclick="preencherOrcamento('Arrefecimento', 'Motor esquentando?')">
+          Solicitar orçamento
+        </button>
       </div>
 
     </div>
