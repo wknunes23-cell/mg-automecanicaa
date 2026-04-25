@@ -985,6 +985,47 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
   }
+  #horarios {
+  padding: 80px 0;
+}
+
+.hours-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--black-2);
+  border-radius: 10px;
+  padding: 40px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hours-item {
+  flex: 1;
+  text-align: center;
+  min-width: 200px;
+}
+
+.hours-item h4 {
+  color: var(--white);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.hours-item p {
+  color: var(--gray);
+  margin: 5px 0;
+}
+
+.hours-item.highlight h4 {
+  color: var(--red);
+}
+
+.hours-divider {
+  width: 1px;
+  height: 60px;
+  background: var(--gray-dark);
+}
 
   /* ===================== SIMULADOR ===================== */
   #simulador {
@@ -1885,6 +1926,46 @@
         </div>
       </div>
     </div>
+  </div>
+</section>
+  <section id="horarios">
+  <div class="container">
+
+    <div class="section-header centered reveal">
+      <span class="label">Funcionamento</span>
+      <h2 class="display-lg">Horários de atendimento</h2>
+    </div>
+
+    <div class="hours-box reveal">
+
+      <div class="hours-item">
+        <h4>Segunda a Sexta</h4>
+        <p>08:00 - 12:00</p>
+        <p>14:00 - 18:00</p>
+      </div>
+
+      <div class="hours-divider"></div>
+
+      <div class="hours-item highlight">
+        <h4>Sábado</h4>
+        <p>Atendimento apenas com agendamento</p>
+      </div>
+
+      <div class="hours-divider"></div>
+
+      <div class="hours-item">
+        <h4>Domingo</h4>
+        <p>Fechado</p>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:25px;" class="reveal">
+      <span class="service-link" onclick="window.open('https://wa.me/5577999416779','_blank')">
+        Agendar atendimento →
+      </span>
+    </div>
+
   </div>
 </section>
 
