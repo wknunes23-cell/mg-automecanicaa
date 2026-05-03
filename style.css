@@ -1,0 +1,755 @@
+:root {
+  --bg: #000000;
+  --surface: #1a1a1a;
+  --surface-soft: #2a2a2a;
+  --surface-muted: #333333;
+  --text: #ffffff;
+  --text-muted: #cccccc;
+  --primary: #ff0000;
+  --primary-dark: #cc0000;
+  --accent: #666666;
+  --border: #444444;
+  --shadow: 0 22px 65px rgba(0, 0, 0, 0.3);
+  --max-width: 1200px;
+  --texture:
+    radial-gradient(
+      circle at 25% 25%,
+      rgba(255, 0, 0, 0.05) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 75% 75%,
+      rgba(26, 26, 26, 0.1) 0%,
+      transparent 50%
+    );
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  color: var(--text);
+  background-color: var(--bg);
+  background-image: var(--texture);
+  background-size: 200px 200px;
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+a {
+  font: inherit;
+}
+
+.container {
+  width: min(100%, var(--max-width));
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: clamp(3rem, 5vw, 6rem) 0;
+  scroll-margin-top: 5.5rem;
+}
+
+.header {
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.96);
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 50px 50px;
+  color: var(--text);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.logo {
+  color: var(--text);
+  font-weight: 800;
+  font-size: 1.15rem;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.75rem;
+}
+
+.nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.nav a:hover {
+  color: var(--primary);
+}
+
+.btn-header,
+.btn-primary,
+.btn-secondary,
+.btn-service {
+  border: none;
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.btn-header,
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  padding: 0.95rem 1.75rem;
+  font-weight: 700;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn-header {
+  padding: 0.7rem 1.25rem;
+  font-size: 0.92rem;
+}
+
+.btn-header:hover,
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(255, 0, 0, 0.24);
+}
+
+.btn-secondary {
+  background: #fff;
+  color: var(--accent);
+  border: 1px solid rgba(17, 24, 31, 0.08);
+  padding: 0.9rem 1.6rem;
+  font-weight: 600;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  background-color: rgba(255, 0, 0, 0.08);
+}
+
+.btn-service {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
+  padding: 0.95rem 1.75rem;
+  font-weight: 700;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.btn-service:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 40px rgba(255, 0, 0, 0.24);
+}
+
+.hero {
+  position: relative;
+  padding-top: clamp(4rem, 6vw, 6rem);
+  padding-bottom: clamp(4rem, 6vw, 5.5rem);
+  background:
+    linear-gradient(135deg, rgba(0, 0, 0, 0.9), rgba(26, 26, 26, 0.9)),
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(255, 0, 0, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 20%,
+      rgba(255, 0, 0, 0.05) 0%,
+      transparent 50%
+    ),
+    linear-gradient(45deg, #1a1a1a 25%, transparent 25%),
+    linear-gradient(-45deg, #1a1a1a 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #1a1a1a 75%),
+    linear-gradient(-45deg, transparent 75%, #1a1a1a 75%);
+  background-size:
+    20px 20px,
+    200px 200px,
+    300px 300px,
+    20px 20px,
+    20px 20px,
+    20px 20px,
+    20px 20px;
+  background-position:
+    0 0,
+    0 0,
+    0 0,
+    0 0,
+    10px 10px,
+    0 0,
+    10px 10px;
+  color: #fff;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+}
+
+.hero-copy {
+  max-width: 100%;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--primary);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.hero h1,
+.section-header h2 {
+  font-size: clamp(2.5rem, 4vw, 3.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
+.hero-text,
+.section-header p,
+.about-copy p,
+.contact p,
+.problem-action p {
+  margin-top: 1.25rem;
+  max-width: 50rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: clamp(1rem, 1vw + 0.25rem, 1.1rem);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.hero-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+
+.hero-trust {
+  display: contents;
+  list-style: none;
+  padding: 0;
+}
+
+.hero-trust li {
+  display: flex;
+  align-items: center;
+  min-height: 6rem;
+  background: #151515;
+  border: 1px solid rgba(255, 0, 0, 0.28);
+  border-radius: 20px;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.45;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
+}
+
+.section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.section-header {
+  max-width: 720px;
+  margin: 0 auto 3rem;
+  text-align: center;
+}
+
+.section-header .eyebrow {
+  color: var(--primary);
+}
+
+.section-header h2 {
+  color: var(--text);
+  margin-top: 1rem;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  margin-top: 1.5rem;
+}
+
+.problems {
+  background-color: var(--surface);
+}
+
+.problems-grid,
+.services-grid,
+.differentials-grid,
+.about-grid,
+.contact-grid {
+  display: grid;
+  gap: 1.75rem;
+}
+
+.problems-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.problem-card,
+.service-card,
+.differential-card,
+.stat-card {
+  background: #151515;
+  border: 1px solid rgba(255, 0, 0, 0.28);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 2rem;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.problem-card:hover,
+.service-card:hover,
+.differential-card:hover,
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 70px rgba(17, 24, 31, 0.12);
+}
+
+.problem-card {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.problem-index {
+  width: 3rem;
+  height: 3rem;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: var(--surface);
+  background: var(--primary);
+  border-radius: 18px;
+}
+
+.problem-card h3,
+.service-card h3,
+.differential-card h3 {
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  margin-bottom: 0.75rem;
+}
+
+.problem-card p,
+.service-card p,
+.differential-card p {
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.problem-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.75rem 2rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+}
+
+.problem-action p {
+  margin: 0;
+  max-width: 42rem;
+  color: var(--text);
+}
+
+.services {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(
+      circle at 30% 70%,
+      rgba(255, 0, 0, 0.03) 0%,
+      transparent 50%
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size:
+    150px 150px,
+    50px 50px,
+    50px 50px;
+}
+
+.services-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.service-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 260px;
+  overflow: hidden;
+}
+
+.service-card-image {
+  width: calc(100% + 4rem);
+  max-width: none;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  margin: -2rem -2rem 1.5rem;
+  border-bottom: 1px solid rgba(255, 0, 0, 0.24);
+}
+
+.service-card p {
+  flex: 1;
+  margin: 0;
+}
+
+.btn-service {
+  margin-top: 1.75rem;
+}
+
+.differentials {
+  background-color: var(--surface-soft);
+  background-image:
+    linear-gradient(45deg, rgba(0, 0, 0, 0.02) 25%, transparent 25%),
+    linear-gradient(-45deg, rgba(0, 0, 0, 0.02) 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.02) 75%),
+    linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.02) 75%);
+  background-size: 10px 10px;
+  background-position:
+    0 0,
+    5px 5px,
+    5px 5px,
+    10px 10px;
+}
+
+.differentials-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.differential-card {
+  min-height: 220px;
+}
+
+.about {
+  background-color: var(--surface);
+}
+
+.about-grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.about-copy p {
+  color: var(--text-muted);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 2rem 0 0;
+}
+
+.stat-card {
+  display: grid;
+  gap: 0.5rem;
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.stat-card strong {
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+
+.stat-card span {
+  color: var(--text-muted);
+}
+
+.endereco {
+  color: var(--accent);
+  font-weight: 700;
+  margin-top: 1rem;
+}
+
+.about-image {
+  border-radius: 28px;
+  overflow: hidden;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.contact {
+  background-color: var(--surface);
+}
+
+.contact-grid {
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.contact-actions {
+  display: grid;
+  align-content: center;
+  gap: 1.25rem;
+}
+
+.contact-links {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.contact-links a {
+  display: inline-flex;
+  width: fit-content;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.contact-links a:hover {
+  color: var(--primary);
+  transform: translateX(3px);
+}
+
+.footer {
+  background-color: #0f0f0f;
+  background-image: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.05) 1px,
+    transparent 1px
+  );
+  background-size: 100px 100px;
+  color: rgba(255, 255, 255, 0.72);
+  padding: 1.5rem 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: center;
+}
+
+.whatsapp-float {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  z-index: 120;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.6rem;
+  height: 3.6rem;
+  border-radius: 50%;
+  background: #25d366;
+  color: #06180c;
+  text-decoration: none;
+  box-shadow: 0 18px 42px rgba(37, 211, 102, 0.35);
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  background: #35e276;
+  transform: translateY(-2px);
+  box-shadow: 0 22px 48px rgba(37, 211, 102, 0.44);
+}
+
+.whatsapp-float svg {
+  width: 1.9rem;
+  height: 1.9rem;
+  fill: currentColor;
+}
+
+@media (max-width: 1024px) {
+  .hero-grid,
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .services-grid,
+  .differentials-grid,
+  .problems-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    scroll-padding-top: 1rem;
+  }
+
+  .header {
+    position: relative;
+    top: auto;
+  }
+
+  .header-inner {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .logo {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.85rem 1.2rem;
+  }
+
+  .btn-header {
+    padding: 0.65rem 1.1rem;
+  }
+
+  .hero {
+    padding-top: 3.5rem;
+  }
+
+  .hero h1,
+  .section-header h2 {
+    font-size: 2.4rem;
+  }
+
+  .problems-grid,
+  .services-grid,
+  .differentials-grid,
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-trust,
+  .contact-grid {
+    display: block;
+  }
+
+  .hero-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-trust {
+    display: contents;
+  }
+
+  .hero-actions,
+  .problem-action,
+  .contact-actions {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .hero-actions .btn-primary,
+  .hero-actions .btn-secondary,
+  .problem-action .btn-secondary,
+  .contact-actions .btn-primary {
+    width: 100%;
+  }
+
+  .hero-trust li + li {
+    margin-top: 0;
+  }
+
+  .hero-trust li {
+    min-height: auto;
+  }
+
+  .contact-actions {
+    margin-top: 1.5rem;
+  }
+
+  .problem-action {
+    padding: 1.75rem;
+  }
+
+  section {
+    padding: 3rem 0;
+    scroll-margin-top: 1rem;
+  }
+
+  .whatsapp-float {
+    right: 1rem;
+    bottom: 1rem;
+    width: 3.35rem;
+    height: 3.35rem;
+  }
+
+  .whatsapp-float svg {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}
